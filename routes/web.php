@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 // rotta home
 Route::get('/',[PublicController::class,'home'])->name('home');
+
+// rotta per la creazione del form dei giochi
+Route::get('/game/create',[GameController::class,'create'])->name('games.create');
+Route::post('/game/store',[GameController::class,'store'])->name('game.store');
