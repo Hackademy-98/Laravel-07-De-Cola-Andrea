@@ -13,7 +13,10 @@ class GameController extends Controller
     */
     public function index()
     {
-        //
+        // in questa variabile catturi tutti i dati del modello Game e quindi quelli contenuti nel database
+        $games= Game::all();
+        return view('game.index',compact('games'));
+        // il compact serve creare come un array associativo 
     }
     
     /**
@@ -45,7 +48,9 @@ class GameController extends Controller
     */
     public function show(Game $game)
     {
-        //
+        // in questa funzione il find e implicito 
+        // dd($game);
+        return view('game.show',compact('game'));
     }
     
     /**
@@ -53,15 +58,24 @@ class GameController extends Controller
     */
     public function edit(Game $game)
     {
-        //
+        return view('game.edit',compact('game'));
     }
     
     /**
     * Update the specified resource in storage.
     */
-    public function update(Request $request, Game $game)
+    public function update(GameStoreRequest $request, Game $game)
     {
-        //
+        // con questa funzione riesci a modificare tramite il form i dati 
+        $file=$request->file('img');
+        $game->update([
+            "title" => $request->title,
+            "description" => $request->description,
+            "price" => $request->price,
+            "img" => $file ? $file->store("public/images") : $game->img
+        ]);
+
+        return redirect()->route("game.edit",compact('game'))->with("success","Il Gioco e stato modificato correttamente!");
     }
     
     /**
@@ -69,6 +83,8 @@ class GameController extends Controller
     */
     public function destroy(Game $game)
     {
-        //
+        $game->delete();
+
+        return redirect()->route('game.index')->with("success","Il Gioco e stato eliminato correttamente!");
     }
 }

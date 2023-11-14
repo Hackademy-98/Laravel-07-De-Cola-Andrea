@@ -12,26 +12,32 @@
                                 <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Lista dei giochi</a>
+                                <a class="nav-link" href="{{route('game.index')}}">Lista dei giochi</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contatti</a>
                             </li> 
-                            {{-- <li class="nav-item dropdown">
+
+                            @auth
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
+                                    {{Auth::user()->name}}
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li> <a class="dropdown-item" href="{{route('games.create')}}">Crea un gioco</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li>  <form action="{{route('logout')}}" method="post">
+                                        @csrf
+                                        <button class="btn btn-light">Logout</button>
+                                        </form>
+                                    </li>
                                 </ul>
-                            </li> --}}
+                            </li>
                         </ul>
-                        <div>
-                            <a class="btn btn-light" href="#">Crea un gioco</a>
-                        </div>
+                        @else
+                        <a class="nav-link px-3" href="{{route('register')}}">Registrati</a>
+                        <a class="nav-link px-3" href="{{route('login')}}">Login</a>
+                        @endauth
                     </div>
                 </div>
             </nav>

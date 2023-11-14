@@ -37,7 +37,8 @@ class GameStoreRequest extends FormRequest
             "description.required" => "Campo Obbligatorio",
             "description.min" => "Minimo 10 caratteri",
             "price.required" => "Campo Obbligatorio",
-            "price.max" => "Massimo $ 999"
+            "price.max" => "Massimo $ 999",
+            "price.decimal" => "la cifra deve contenere massimo due cifre decimali separate da un punto alla fine del intero"
         ];
     }
 }
