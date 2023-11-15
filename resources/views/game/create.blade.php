@@ -26,12 +26,13 @@
                         @error('description') <p class="text-danger">{{$message}}</p> @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="category_id" class="form-label" name="category_id">Categoria</label>
-                        <select class="form-select" name="category_id" aria-label="Default select example">
+                        <label for="category" class="form-label">Categoria</label>
+                        <select class="form-select" id="category" name="category">
+                            <option selected>Seleziona la categoria</option>
                             @foreach($categories as $category)   
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
-                            @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+                            @error('category') <p class="text-danger">{{$message}}</p> @enderror
                         </select>
                     </div>
                     <div class="mb-3">

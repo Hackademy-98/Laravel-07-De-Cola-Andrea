@@ -45,7 +45,7 @@ class GameController extends Controller
             "description" => $request->description,
             "price" => $request->price,
             "img" => $file ? $file->store('public/images') : "public/images/default.png",
-            "category_id" => $request->category_id
+            "category_id" => $request->category
         ]);
         return redirect()->route('games.create')->with('success','Gioco inserito con successo!');
     }
@@ -80,9 +80,9 @@ class GameController extends Controller
             "description" => $request->description,
             "price" => $request->price,
             "img" => $file ? $file->store("public/images") : $game->img,
-            "category_id" => $request->category_id
+            "category" => $request->category
         ]);
-
+        
         return redirect()->route("game.edit",compact('game'))->with("success","Il Gioco e stato modificato correttamente!");
     }
     
@@ -92,7 +92,12 @@ class GameController extends Controller
     public function destroy(Game $game)
     {
         $game->delete();
-
+        
         return redirect()->route('game.index')->with("success","Il Gioco e stato eliminato correttamente!");
+    }
+    // filtra i giochi in base alla categoria selezionata
+    public function filterByCategory(Category $category){
+        $games = $category->games;
+        return view('game.filterByCategory',compact("category"));
     }
 }

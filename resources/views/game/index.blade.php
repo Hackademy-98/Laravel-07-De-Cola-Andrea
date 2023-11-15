@@ -10,7 +10,7 @@
             </div>
             @endif
             @foreach ($games as $game)
-            <div class="col-3 mt-3">
+            <div class="col-4 mt-3">
                 {{-- quando usi il componente ricordati di richiamare la variabile --}}
                 <x-card :game="$game"/>
             </div>

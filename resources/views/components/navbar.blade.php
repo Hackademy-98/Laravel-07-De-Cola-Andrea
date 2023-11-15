@@ -1,6 +1,6 @@
 
         <div class="col-12">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary fixed">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{{route('home')}}" ><i class="fa-solid fa-gamepad fs-2"></i></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
