@@ -26,6 +26,15 @@
                         @error('description') <p class="text-danger">{{$message}}</p> @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="category_id" class="form-label" name="category_id">Categoria</label>
+                        <select class="form-select" name="category_id" aria-label="Default select example">
+                            @foreach($categories as $category)   
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                            @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="price" class="form-label">Prezzo</label>
                         <input name="price" type="text" class="form-control" id="price" value="{{old('price')}}">
                         @error('price') <p class="text-danger">{{$message}} </p>@enderror

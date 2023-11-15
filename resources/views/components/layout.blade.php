@@ -10,7 +10,7 @@
 <body>
     <x-navbar/>
     {{$slot}}
-    
+    <x-footer/>
 </body>
 <!-- script fontawesome -->
 <script src="https://kit.fontawesome.com/641d9b841b.js" crossorigin="anonymous"></script>

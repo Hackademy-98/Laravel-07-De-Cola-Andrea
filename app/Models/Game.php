@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','description','price','img'];
+    protected $fillable = ['title','description','price','img','category_id'];
+// relazione n-1
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

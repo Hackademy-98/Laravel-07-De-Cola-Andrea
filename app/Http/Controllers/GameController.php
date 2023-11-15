@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GameStoreRequest;
+use App\Models\Category;
 use App\Models\Game;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+    // middleware
+    public function __construct(){
+        $this->middleware('auth')->except('index');
+    }
     /**
     * Display a listing of the resource.
     */
@@ -24,7 +29,8 @@ class GameController extends Controller
     */
     public function create()
     {
-        return view('game.create');
+        $categories = Category::all();
+        return view('game.create',compact('categories'));
     }
     
     /**
@@ -38,7 +44,8 @@ class GameController extends Controller
             "title" => $request->title,
             "description" => $request->description,
             "price" => $request->price,
-            "img" => $file ? $file->store('public/images') : "public/images/default.png"
+            "img" => $file ? $file->store('public/images') : "public/images/default.png",
+            "category_id" => $request->category_id
         ]);
         return redirect()->route('games.create')->with('success','Gioco inserito con successo!');
     }
@@ -72,7 +79,8 @@ class GameController extends Controller
             "title" => $request->title,
             "description" => $request->description,
             "price" => $request->price,
-            "img" => $file ? $file->store("public/images") : $game->img
+            "img" => $file ? $file->store("public/images") : $game->img,
+            "category_id" => $request->category_id
         ]);
 
         return redirect()->route("game.edit",compact('game'))->with("success","Il Gioco e stato modificato correttamente!");

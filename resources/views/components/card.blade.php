@@ -4,6 +4,7 @@
         <div class="card-body">
             <h5 class="card-title text-center">{{$game->title}}</h5>
             <p class="card-text text-center">{{$game->price}}</p>
+            <p class="card-text text-center">{{$game->category->name}}</p>
             <div class="d-flex justify-content-around">
                 <a href="{{route('game.show', compact('game'))}}" class="btn btn-primary">Vai Al Dettaglio</a>
                 <a href="{{route('game.edit',compact('game'))}}" class="btn btn-info">Modifica</a>
