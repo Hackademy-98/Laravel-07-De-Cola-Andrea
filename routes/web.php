@@ -33,5 +33,9 @@ Route::put('/game/update/{game}',[GameController::class,'update'])->name('game.u
 // Rotta per eleminazione
 Route::delete('/game/delete/{game}',[GameController::class,'destroy'])->name('game.destroy');
 
+// Rotta dei form contatti
+Route::get('/contact-us',[PublicController::class,'form'])->name('form');
+Route::post('/contact-email',[PublicController::class,'sendEmail'])->name('send.email');
+
 // filtrare per categoria 1-n
 Route::get('/games/category/{category}',[GameController::class,'filterByCategory'])->name('game.filterByCategory');

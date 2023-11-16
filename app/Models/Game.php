@@ -13,4 +13,8 @@ class Game extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public function consoles(){
+        return $this->belongsToMany(Console::class);
+    }
 }
